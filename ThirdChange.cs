@@ -7,5 +7,10 @@ namespace com.ams.pistola.api.Controllers
     [ApiController]
     public class ThirdChangeController : ControllerBase
     {
+        // Add constructor
+        public ThirdChangeController()
+        {
+            // code here ..
+        }
     }
 }
