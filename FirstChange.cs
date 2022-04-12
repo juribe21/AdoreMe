@@ -7,5 +7,12 @@ namespace com.ams.pistola.api.Controllers
     [ApiController]
     public class ConfigurationController : ControllerBase
     {
+        // code her
+        
+        // constructor
+        public ConfigurationController()
+        {
+        }
+        
     }
 }
