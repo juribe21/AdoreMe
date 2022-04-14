@@ -12,6 +12,7 @@ using EFCore.BulkExtensions;
 
 namespace com.ams.pistola.api.Controllers {
 
+
 [HttpGet]
         [Route("api/prereturn/lps")]
         public IActionResult preReturnLps() {
@@ -23,7 +24,6 @@ namespace com.ams.pistola.api.Controllers {
 
             return Ok(listLps);
         }
-
 
  [HttpPost]
         [Route("api/returns/item")]
