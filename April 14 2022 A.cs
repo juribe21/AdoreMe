@@ -12,6 +12,19 @@ using EFCore.BulkExtensions;
 
 namespace com.ams.pistola.api.Controllers {
 
+[HttpGet]
+        [Route("api/prereturn/lps")]
+        public IActionResult preReturnLps() {
+            var listLps = _context.TStoredItem.Where(w => w.LocationId == "TJ-STAGE-01").GroupBy(o => o.HuId).Select(
+                s => new {
+                    huId = s.Key,
+                    qty = s.Sum( sum => sum.ActualQty)
+                }).ToList();
+
+            return Ok(listLps);
+        }
+
+
  [HttpPost]
         [Route("api/returns/item")]
         public AmTReturnedItem returnItem([FromBody] ReturnedItemDTO item) 
