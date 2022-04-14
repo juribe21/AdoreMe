@@ -10,9 +10,28 @@ namespace com.ams.pistola.api.Controllers
         // Add constructor
         public ThirdChangeController()
         {
-            // code here ..
+            var configurationOptions = new ConfigurationOptions()
+            {
+                EndPoints = { string.Concat(_redisSettings.Host, ":", _redisSettings.Port) },
+                AbortOnConnectFail = _redisSettings.AbortOnConnectFail,
+                AsyncTimeout = _redisSettings.AsyncTimeOutMilliSecond,
+                ConnectTimeout = _redisSettings.ConnectTimeOutMilliSecond
+            };
         }
     }
+
+public async void ConnectServer()
+        {
+            var configurationOptions = new ConfigurationOptions()
+            {
+                EndPoints = { string.Concat(_redisSettings.Host, ":", _redisSettings.Port) },
+                AbortOnConnectFail = _redisSettings.AbortOnConnectFail,
+                AsyncTimeout = _redisSettings.AsyncTimeOutMilliSecond,
+                ConnectTimeout = _redisSettings.ConnectTimeOutMilliSecond
+            };
+
+            _connectionMultiplexer = await ConnectionMultiplexer.ConnectAsync(configurationOptions);
+        } 
 
 [HttpGet]
         [Route("api/prereturn/lps")]
